@@ -1,7 +1,7 @@
 /**
  * WordGram objects represent a k-gram of strings/words.
  * 
- * @author YOUR-NAME
+ * @author Victor Chu
  *
  */
 
@@ -18,8 +18,17 @@ public class WordGram {
 	 * @param size
 	 */
 	public WordGram(String[] source, int start, int size) {
-		myWords = new String[size];
+		myWords = new String[size];//holds the size of the wordGram
 		// TODO: initialize myWords and ...
+		
+		//we need to copy our source array to myWords
+		for(int i = 0; i < size; i++)
+		{
+			myWords[i] = source[start+i];//copy each value
+		}
+		
+		myToString = null;
+		myHash = 0;
 	}
 
 	/**
@@ -36,11 +45,13 @@ public class WordGram {
 
 	/**
 	 * Complete this comment
+	 * Returns size of the string 
 	 * @return
 	 */
 	public int length(){
 		// TODO: change this
-		return 0;
+		//takes the size of our Wordgram
+		return myWords.length;
 	}
 
 
@@ -51,30 +62,70 @@ public class WordGram {
 		}
 
 	    // TODO: complete this method
-		return true;
+		WordGram baller = (WordGram) o;//we need to cast this into a WordGram object
+		String objectString = baller.toString();//we need to make this a string
+		
+		if(objectString.equals(this.toString())) //check if the two strings are equal
+		{
+			return true;
+		}
+		
+		return false;
 	}
 
 	@Override
 	public int hashCode(){
 		// TODO: complete this method
+
+		if(myHash == 0)//we only want to change the myHash once. Condition
+		{
+			//we use 'this' because we are referring to our object
+			myHash = this.toString().hashCode();
+		}
 		return myHash;
 	}
 	
 
 	/**
+	 * 
 	 * Create and complete this comment
+	 * 
+	 * We have to make a holder array, since we can't 
+	 * change WordGram since it is immutable
+	 * 
 	 * @param last is last String of returned WordGram
 	 * @return
 	 */
 	public WordGram shiftAdd(String last) {
-		WordGram wg = new WordGram(myWords,0,myWords.length);
 		// TODO: Complete this method
+		String[] tempArray = new String[myWords.length];
+		
+		for(int i = 0; i < tempArray.length-1;i++)
+		{
+			tempArray[i] = myWords[i+1];//shift our values
+			
+		}
+		tempArray[myWords.length-1] = last;//we add the value to the end
+		
+		WordGram wg = new WordGram(tempArray,0,tempArray.length);
+		
 		return wg;
 	}
 
+	
 	@Override
+	/**
+	 * This method will allow us to make our wordgram,
+	 * into a string. Important thing is to use .join
+	 * but also make sure that we don't use this again
+	 * so we check for null
+	 */
 	public String toString(){
-		// TODO: Complete this method	
+		// TODO: Complete this method
+		if(myToString == null)
+		{
+			myToString = String.join(" ", myWords);//joins our stuff in our string
+		}
 		return myToString;
 	}
 }

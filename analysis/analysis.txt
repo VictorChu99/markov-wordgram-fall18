@@ -1,4 +1,5 @@
-YOUR NAME and YOUR NETID
+Victor Chu
+vic4
 
 Run WordGramDiver for wordgrams of size 2-10 and record
 the number of WordGram values/objects that occur more than
