@@ -13,28 +13,53 @@ occur more than once. Find these same values for other orders
 of k and complete the table below for different k-grams/different 
 values of WSIZE
 
-WSIZE    # duplicates
+WSIZE    # duplicates //do wgs - size. 
 2        60,453
 3        10,756
-4
-5
-7
-8
-9
-10
+4		 1,987
+5		 667
+6		 362
+7		 226
+8	     151
+9	     105
+10    	 73
 
 =====
 Explain in your own words the conceptual differences between 
 the benchmark and benchmarkShift methods. 
 Answer these questions: 
 
+
+
 (1) Why the results of these methods should be the same in 
 terms of changes made to the HashSet parameter.
 
+They both shift the words around, but they do it different ways. You add 
+certain words continuously to the wordgram, but in different ways. You add both 
+to a hashset so there are not any duplicates in either one. Wordgram sets have
+the same amount of entries because of this hashset. 
+
+
 (2) What are the conceptual differences between the two
 benchmarking methods
+
+First one, benchmark, adds our words into a string arraylist, later
+converted to an array. Then we create a wordgram out of each 
+successive word in our array, adding it to a set so
+we avoid duplicates. We return how many unique wordgrams we have. 
+In the second benchmark method, benchmarkShift, we
+still create a list of words, but we add one wordgram
+directly to a set.Then, every wordgram after that
+as well is added to the set. We still get the same amount of unique wordgrams.
 
 (3) Is the total amount of memory allocated for arrays
 the same or different in the two methods? Account for
 arrays created in the methods and arrays created by
 WordGram objects. Try to be quantitative in answering.
+
+The amount of memory required is more in the first method. 
+One of the reasons this is due to, is because you are constantly creating
+a Wordgram, which require looping through the words again and again. 
+The quantitative way to figure this out, is to compare the time 
+it takes to run, in which the benchmark time takes
+consistently longer. 

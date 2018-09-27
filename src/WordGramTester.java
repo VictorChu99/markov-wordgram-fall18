@@ -29,7 +29,6 @@ public class WordGramTester {
 
 	@Test
 	public void testEquals(){
-
 		assertTrue("eq fail on 0,3",myGrams[0].equals(myGrams[3]));
 		assertTrue("eq fail on 0,6",myGrams[0].equals(myGrams[6]));
 		assertTrue("eq fail on 1,4",myGrams[1].equals(myGrams[4]));
@@ -52,6 +51,7 @@ public class WordGramTester {
 		assertTrue("hash code test", set.size() > 9);
 	}
 	
+
 	
 	@Test
 	public void testShift() {
