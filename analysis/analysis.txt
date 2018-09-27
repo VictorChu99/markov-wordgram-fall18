@@ -27,17 +27,29 @@ WSIZE    # duplicates //do wgs - size.
 =====
 Explain in your own words the conceptual differences between 
 the benchmark and benchmarkShift methods. 
-Answer these questions: 
 
+Each method shifts the words around, to return the total
+unique words. In each, you add words continuously, but 
+you still get the same amount of unique words due to 
+them being stored in sets. Conceptually, the first method
+adds our words, to a list, then creates a wordgram out of them. 
+The second one creates words grams directly, adding each 
+wordgram directly to a set. We still get the same amount of unique letters
+The second method, benchmarkShift runs quicker, because
+we aren't creating wordgrams again and again like we are in the first one
+which takes looping through the words again and again. 
+
+Answer these questions: 
 
 
 (1) Why the results of these methods should be the same in 
 terms of changes made to the HashSet parameter.
 
 They both shift the words around, but they do it different ways. You add 
-certain words continuously to the wordgram, but in different ways. You add both 
+ words continuously to the wordgram, but in different ways. You add both 
 to a hashset so there are not any duplicates in either one. Wordgram sets have
-the same amount of entries because of this hashset. 
+the same amount of entries because of this hashset. Because of no duplicates,
+you get the same amount of words in each. 
 
 
 (2) What are the conceptual differences between the two
